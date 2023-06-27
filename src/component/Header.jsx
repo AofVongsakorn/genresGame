@@ -6,12 +6,11 @@ import { BsFillMoonFill } from "react-icons/bs"
 import { ThemeContext } from './ThemeContext'
 
 const Header = () => {
-
-    const [toggle, setToggle] = useState(false)
+    
     const { theme, setTheme } = useContext(ThemeContext)
 
     useEffect(() => {
-        console.log(theme);
+        // console.log(theme);
     }, [])
 
     return (
