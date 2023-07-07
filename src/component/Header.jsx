@@ -1,21 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react'
-import logo from '../assets/logoGame.png'
+import { FaGamepad} from "react-icons/fa" 
 import { BiSearchAlt2 } from "react-icons/bi"
 import { BsSunFill } from "react-icons/bs"
+import { AiOutlineMenu } from "react-icons/ai"
 import { BsFillMoonFill } from "react-icons/bs"
 import { ThemeContext } from './ThemeContext'
 
 const Header = () => {
     
     const { theme, setTheme } = useContext(ThemeContext)
-
+    const [ menubar, setMenubar] = useState(false)
     useEffect(() => {
         // console.log(theme);
     }, [])
 
+    console.log(menubar);
+
     return (
         <div className='flex flex-row items-center pt-3 px-2'>
-            <img src={logo} width={60} height={60} className='bg-white' />
+            <FaGamepad className='hidden md:block w-[70px] h-[70px] fill-black dark:fill-white ' />
+            <AiOutlineMenu  onClick={() => {setMenubar(prev => !prev)}} className='md:hidden w-[50px] h-[50px] fill-black dark:fill-white ' />
+
             <div className='flex bg-slate-200 p-2 w-full items-center mx-5 rounded-full '>
                 <BiSearchAlt2 />
                 <input type="text" className='bg-transparent outline-none px-2' placeholder='Search' />

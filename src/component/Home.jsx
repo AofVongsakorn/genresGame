@@ -23,7 +23,6 @@ const Home = () => {
   }
 
   const getGameListByGenreID = (id) => {
-    console.log("get ID" , id);
     GlobalApi.getGameListByGenreID(id).then((res) => {
       setGamelistByGenres(res.data.results)
     })
