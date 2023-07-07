@@ -7,8 +7,8 @@ import { ThemeContext } from './component/ThemeContext'
 
 function App() {
 
-  const [count, setCount] = useState(0)
   const [theme, setTheme] = useState('dark')
+  const [ statusbar, setStatusbar] = useState(false)
   useEffect(() => {
     setTheme(localStorage.getItem('theme') ? localStorage.getItem('theme'): 'dark') 
   }, [])
@@ -18,8 +18,8 @@ function App() {
 
       <div className={`${theme} 
     ${theme == 'dark' ? 'bg-[#121212]' : null} min-h-[100vh]`}>
-        <Header />
-        <Home />
+        <Header  statusbar ={(status) => {setStatusbar(status)}}/>
+        <Home statusbar={statusbar} />
       </div>
 
     </ThemeContext.Provider>

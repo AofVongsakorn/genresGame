@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import GlobalApi from '../Services/GlobalApi'
 
-const Genres = ({setGenresId, selectGenresName}) => {
+const Genres = ({setGenresId, selectGenresName, getStatusbar}) => {
 
     const [genresList, setGenresList] = useState([])
     const [activeIndex, setActiveIndex] = useState()
@@ -16,8 +16,9 @@ const Genres = ({setGenresId, selectGenresName}) => {
            
         })
     }
+ 
   return (
-    <div className='hidden md:block'>
+    <div className={` ${getStatusbar == true? '' : 'hidden md:block'}`}>
         <h2 className='text-[30px] font-bold dark:text-white '>Genres</h2>
         {genresList.map((item, index) => {
             return(
