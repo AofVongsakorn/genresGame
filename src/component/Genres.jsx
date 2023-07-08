@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import GlobalApi from '../Services/GlobalApi'
+import { ThemeContext } from './ThemeContext'
 
-const Genres = ({setGenresId, selectGenresName, getStatusbar}) => {
+const Genres = ({setGenresId, selectGenresName}) => {
+
+    const {statusbar, setStatusbar} = useContext(ThemeContext)
 
     const [genresList, setGenresList] = useState([])
     const [activeIndex, setActiveIndex] = useState()
+    // const { statusbar } = useContext(ThemeContext)
 
     useEffect(() => {
         getGenreList();
@@ -16,15 +20,17 @@ const Genres = ({setGenresId, selectGenresName, getStatusbar}) => {
            
         })
     }
+
+    // console.log(statusbar);
  
   return (
-    <div className={` ${getStatusbar == true? '' : 'hidden md:block'}`}>
+    <div className={` ${statusbar == true? '' : 'hidden md:block'}`}>
         <h2 className='text-[30px] font-bold dark:text-white '>Genres</h2>
         {genresList.map((item, index) => {
             return(
             <div 
             key={index}
-            onClick={()=> {setActiveIndex(index);setGenresId(item.id); selectGenresName(item.name)} }
+            onClick={()=> {setActiveIndex(index);setGenresId(item.id); selectGenresName(item.name); setStatusbar(prev => !prev)} }
             className={`flex flex-row gap-2 items-center mb-2 cursor-pointer
             hover:bg-gray-300 p-2 rounded-lg hover:dark:bg-gray-600 group ${activeIndex==index?'bg-gray-300 dark:bg-gray-600' : null}`} >
                 <img src={item.image_background} 

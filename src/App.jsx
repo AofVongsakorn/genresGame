@@ -13,13 +13,15 @@ function App() {
     setTheme(localStorage.getItem('theme') ? localStorage.getItem('theme'): 'dark') 
   }, [])
 
+  console.log(statusbar);
+
   return (
-    <ThemeContext.Provider value={{theme,setTheme}}>
+    <ThemeContext.Provider value={{theme,setTheme,statusbar, setStatusbar}}>
 
       <div className={`${theme} 
     ${theme == 'dark' ? 'bg-[#121212]' : null} min-h-[100vh]`}>
-        <Header  statusbar ={(status) => {setStatusbar(status)}}/>
-        <Home statusbar={statusbar} />
+        <Header/>
+        <Home />
       </div>
 
     </ThemeContext.Provider>

@@ -5,7 +5,7 @@ import Banner from './Banner'
 import TrendingGames from './TrendingGames'
 import GameByGenres from './GameByGenres'
 
-const Home = ({statusbar}) => {
+const Home = () => {
 
   const [allGameList, setallGameList] = useState()
   const [gameListByGenres, setGamelistByGenres] = useState([])
@@ -33,7 +33,6 @@ const Home = ({statusbar}) => {
         <Genres 
         setGenresId={(setGenresId) => {getGameListByGenreID(setGenresId)}}
         selectGenresName={(name) => {setSelectGenresName(name)}}
-        getStatusbar= {statusbar}
         />
       </div>
       <div className='md:col-span-3 col-span-4'>
