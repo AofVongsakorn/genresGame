@@ -13,7 +13,6 @@ function App() {
     setTheme(localStorage.getItem('theme') ? localStorage.getItem('theme'): 'dark') 
   }, [])
 
-  console.log(statusbar);
 
   return (
     <ThemeContext.Provider value={{theme,setTheme,statusbar, setStatusbar}}>
